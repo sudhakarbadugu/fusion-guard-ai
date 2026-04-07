@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  fusion-guard-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: fusion-guard-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Map the data folder to safely persist enrolled face embeddings
+      - ./data:/app/data
+      # Map a top level cache directory to avoid re-downloading large HuggingFace weights (~4GB)
+      - ./cache/huggingface:/app/cache/huggingface
+    environment:
+      - HF_HOME=/app/cache/huggingface
+      - FACE_RECOGNITION_THRESHOLD=0.5
+    restart: unless-stopped
