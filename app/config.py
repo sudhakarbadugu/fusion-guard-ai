@@ -10,15 +10,18 @@ class Settings(BaseSettings):
     
     # Default Policy Rules if none provided in request
     DEFAULT_ALLOWED_ACTIVITIES: list[str] = [
-        "person walking",
-        "person working on laptop",
-        "person talking on phone"
+        'a person working on a computer',
+        'a person writing on a whiteboard',
+        'a person reading a book',
+        'a group of students discussing',
+        'a person conducting an experiment',
     ]
     DEFAULT_UNAUTHORIZED_ACTIVITIES: list[str] = [
-        "person fighting",
-        "person carrying a weapon",
-        "person stealing",
-        "person breaking things"
+        'a person taking photos of equipment',
+        'a person eating food in the lab',
+        'a person sleeping at the desk',
+        'an unauthorized person in the lab',
+        'a person tampering with equipment',
     ]
 
     class Config:
